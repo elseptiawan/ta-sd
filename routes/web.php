@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('Layout.main');
 });
+Route::get('/operator', function() {
+    return view('Pages.Operator.indexOperator');
+});
+Route::get('/guru', function() {
+    return view('Pages.Guru.indexGuru');
+});
+Route::get('/siswa', function() {
+    return view('Pages.Siswa.indexSiswa');
+});
