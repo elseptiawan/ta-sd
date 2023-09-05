@@ -44,8 +44,8 @@ class OperatorController extends Controller
 
     public function edit($id)
     {
-        $op = Operator::find($id);
-        return view('operator.edit', compact('operator'));
+        $data['op'] = Operator::whereId($id)->with('user')->first();
+        return view('Pages.Operator.update', $data);
     }
 
     public function update(Request $request, $id)

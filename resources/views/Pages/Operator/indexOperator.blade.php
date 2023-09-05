@@ -13,28 +13,32 @@
                     <tr class="table-primary">
                         <th scope="col">No</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Jenis Kelamin</th>
-                        <th scope="col">Tanggal Lahir</th>
+                        <th scope="col">jabatan</th>
+                        <th scope="col">jenis_kelamin</th>
                         <th scope="col">Alamat</th>
-                        <th scope="col">Telepon</th>
-                        <th scope="col">Jabatan</th>
+                        <th scope="col">agama</th>
                         <th scope="col">#</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Operator 1</td>
-                        <td>Laki Laki</td>
-                        <td>15 Januari 1999</td>
-                        <td>Teluk Kuantan</td>
-                        <td>082112345678</td>
-                        <td>Operator</td>
-                        <td>
-                            <button class="btn-success p-1 mr-1 rounded"><i class="bi bi-pencil-square"></i></button>
-                            <button class="btn-danger p-1 mr-1 rounded"><i class="bi bi-trash"></i></button>
-                        </td>
-                    </tr>
+                    @php
+                        $i = 1;
+                    @endphp
+                    @foreach ($operators as $item)
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $item->nama }}</td>
+                            <td>{{ $item->jabatan }}</td>
+                            <td>{{ $item->alamat }}</td>
+                            <td>{{ $item->jenis_kelamin }}</td>
+                            <td>{{ $item->agama }}</td>
+                            <td>
+                                <a class="btn-success p-1 mr-1 rounded" href="/operator/{{ $item->id }}/edit"
+                                    href=""><i class="bi bi-pencil-square"></i></a>
+                                <button class="btn-danger p-1 mr-1 rounded"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
