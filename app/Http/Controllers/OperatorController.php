@@ -24,7 +24,7 @@ class OperatorController extends Controller
         // Membuat pengguna (user)
         $user = new User;
         $user->name = $request->input('nama');
-        $user->email = $request->input('username'); // Atur email sesuai kebutuhan
+        $user->email = $request->input('username').'@gmail.com'; // Atur email sesuai kebutuhan
         $user->password = bcrypt($request->input('username')); // Anda dapat mengenkripsi password sesuai kebutuhan
         $user->save();
 
@@ -61,7 +61,6 @@ class OperatorController extends Controller
 
         // Memperbarui data operator
         $operator->nama = $request->input('nama');
-        $operator->username = $request->input('username');
         $operator->jabatan = $request->input('jabatan');
         $operator->alamat = $request->input('alamat');
         $operator->jenis_kelamin = $request->input('jenis_kelamin');

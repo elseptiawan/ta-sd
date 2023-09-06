@@ -3,7 +3,7 @@
     <div class="container-fluid p-0">
         <div class="d-flex justify-content-between mb-3">
             <h1 class="h4 mb-3">Siswa</h1>
-            <button class="btn btn-inverse-info" onClick="create()">
+            <button class="btn btn-inverse-info" onclick="window.location.href='{{route('siswa.create')}}'">
                 <i class="bi bi-file-earmark-plus"></i> Tambah Data</button>
         </div>
         <div class="row" id="read"></div>
@@ -22,19 +22,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php $no = 1; @endphp
+                    @foreach($siswa as $s)
                     <tr>
-                        <td>1</td>
-                        <td>Siswa 1</td>
-                        <td>Laki Laki</td>
-                        <td>15 Januari 1999</td>
-                        <td>Teluk Kuantan</td>
-                        <td>siswa1@gmail.com</td>
-                        <td>082112345678</td>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $s->nama }}</td>
+                        <td>{{ $s->jenis_kelamin }}</td>
+                        <td>{{ $s->tanggal_lahir }}</td>
+                        <td>{{ $s->alamat }}</td>
+                        <td>{{ $s->user->email }}</td>
+                        <td>{{ $s->no_hp }}</td>
                         <td>
                             <button class="btn-success p-1 mr-1 rounded"><i class="bi bi-pencil-square"></i></button>
                             <button class="btn-danger p-1 mr-1 rounded"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

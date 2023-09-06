@@ -3,7 +3,7 @@
     <div class="container-fluid p-0">
         <div class="d-flex justify-content-between mb-3">
             <h1 class="h4 mb-3">Operator</h1>
-            <button class="btn btn-inverse-info" onClick="create()">
+            <button class="btn btn-inverse-info" onclick="window.location.href='{{route('operator.create')}}'">
                 <i class="bi bi-file-earmark-plus"></i> Tambah Data</button>
         </div>
         <div class="row" id="read"></div>
@@ -35,7 +35,7 @@
                             <td>
                                 <a class="btn-success p-1 mr-1 rounded" href="/operator/{{ $item->id }}/edit"
                                     href=""><i class="bi bi-pencil-square"></i></a>
-                                <button class="btn-danger p-1 mr-1 rounded"><i class="bi bi-trash"></i></button>
+                                <button class="btn-danger p-1 mr-1 rounded" onclick="window.location.href='{{route('operator.destroy', ['id' => $item->id])}}'"><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach

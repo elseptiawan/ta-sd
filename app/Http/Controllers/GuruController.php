@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Guru;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 
 class GuruController extends Controller
 {
     public function index()
     {
         $guru = Guru::all();
-        return view('guru.index', compact('guru'));
+        return view('Pages.Guru.indexGuru', compact('guru'));
     }
 
     public function create()
     {
-        return view('guru.create');
+        return view('Pages.Guru.create');
     }
 
     public function store(Request $request)
@@ -24,19 +25,21 @@ class GuruController extends Controller
         // Membuat pengguna (user)
         $user = new User;
         $user->name = $request->input('nama');
-        $user->email = $request->input('nip'); // Atur email sesuai kebutuhan
-        $user->password = bcrypt($request->input('nip')); // Anda dapat mengenkripsi password sesuai kebutuhan
+        $user->email = $request->input('email'); // Atur email sesuai kebutuhan
+        $user->password = bcrypt($request->input('nuptk')); // Anda dapat mengenkripsi password sesuai kebutuhan
         $user->save();
 
         // Membuat guru dan menghubungkannya dengan pengguna
         $guru = new Guru;
         $guru->user_id = $user->id;
         $guru->nama = $request->input('nama');
-        $guru->nip = $request->input('nip');
+        $guru->nuptk = $request->input('nuptk');
         $guru->jabatan = $request->input('jabatan');
         $guru->alamat = $request->input('alamat');
         $guru->jenis_kelamin = $request->input('jenis_kelamin');
         $guru->agama = $request->input('agama');
+        $guru->no_hp = $request->input('no_hp');
+        $guru->tanggal_lahir = Carbon::parse($request->input('tanggal_lahir'));
         $guru->save();
 
         return redirect()->route('guru.index')->with('success', 'Guru telah ditambahkan.');
@@ -44,8 +47,8 @@ class GuruController extends Controller
 
     public function edit($id)
     {
-        $guru = Guru::find($id);
-        return view('guru.edit', compact('guru'));
+        $guru = Guru::where('id', $id)->with('user')->first();
+        return view('Pages.guru.edit', compact('guru'));
     }
 
     public function update(Request $request, $id)
@@ -61,11 +64,13 @@ class GuruController extends Controller
 
         // Memperbarui data guru
         $guru->nama = $request->input('nama');
-        $guru->nip = $request->input('nip');
+        $guru->nuptk = $request->input('nuptk');
         $guru->jabatan = $request->input('jabatan');
         $guru->alamat = $request->input('alamat');
         $guru->jenis_kelamin = $request->input('jenis_kelamin');
         $guru->agama = $request->input('agama');
+        $guru->no_hp = $request->input('no_hp');
+        $guru->tanggal_lahir = Carbon::parse($request->input('tanggal_lahir'));
         $guru->save();
 
         return redirect()->route('guru.index')->with('success', 'Guru telah diperbarui.');

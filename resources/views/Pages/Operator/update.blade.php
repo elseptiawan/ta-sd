@@ -21,11 +21,6 @@
                             value="{{ $op->user->email }}">
                     </div>
                     <div class="col-6 mb-3">
-                        <label class="form-label" for="password">password</label>
-                        <input class="form-control" id="password" name="password" required type="text"
-                            value="{{ $op->password }}">
-                    </div>
-                    <div class="col-6 mb-3">
                         <label class="form-label" for="jabatan">Jabatan</label>
                         <input class="form-control" id="jabatan" name="jabatan" required type="text"
                             value="{{ $op->jabatan }}">

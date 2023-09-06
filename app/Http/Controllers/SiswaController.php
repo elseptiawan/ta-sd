@@ -10,13 +10,13 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $siswa = Siswa::all();
-        return view('siswa.index', compact('siswa'));
+        $siswa = Siswa::with('user')->get();
+        return view('Pages.Siswa.indexSiswa', compact('siswa'));
     }
 
     public function create()
     {
-        return view('siswa.create');
+        return view('Pages.Siswa.store');
     }
 
     public function store(Request $request)

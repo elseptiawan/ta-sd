@@ -32,7 +32,7 @@ Route::group(['prefix' => 'operator'], function () {
     Route::post('/store', [\App\Http\Controllers\OperatorController::class, 'store'])->name('operator.store');
     Route::get('/{id}/edit', [\App\Http\Controllers\OperatorController::class, 'edit'])->name('operator.edit');
     Route::post('/{id}/update', [\App\Http\Controllers\OperatorController::class, 'update'])->name('operator.update');
-    Route::delete('/{id}/destroy', [\App\Http\Controllers\OperatorController::class, 'destroy'])->name('operator.destroy');
+    Route::get('/{id}/destroy', [\App\Http\Controllers\OperatorController::class, 'destroy'])->name('operator.destroy');
 });
 
 Route::group(['prefix' => 'guru'], function () {
@@ -40,8 +40,8 @@ Route::group(['prefix' => 'guru'], function () {
     Route::get('/create', [\App\Http\Controllers\GuruController::class, 'create'])->name('guru.create');
     Route::post('/store', [\App\Http\Controllers\GuruController::class, 'store'])->name('guru.store');
     Route::get('/{id}/edit', [\App\Http\Controllers\GuruController::class, 'edit'])->name('guru.edit');
-    Route::put('/{id}/update', [\App\Http\Controllers\GuruController::class, 'update'])->name('guru.update');
-    Route::delete('/{id}/destroy', [\App\Http\Controllers\GuruController::class, 'destroy'])->name('guru.destroy');
+    Route::post('/{id}/update', [\App\Http\Controllers\GuruController::class, 'update'])->name('guru.update');
+    Route::get('/{id}/destroy', [\App\Http\Controllers\GuruController::class, 'destroy'])->name('guru.destroy');
 });
 
 Route::group(['prefix' => 'kelas'], function () {
